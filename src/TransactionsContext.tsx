@@ -13,16 +13,19 @@ interface Transaction {
 
 type TransactionInput = Omit<Transaction, 'id' | 'createdAt'>; // Omit os dados informados do template passado
 
+
 interface TransactionsProviderProps{
     children: ReactNode;
 }
 
 interface TransactionsContextData { // 09:09
     transactions: Transaction[];
-    createTransaction: (transaction: TransactionInput) => void
+    createTransaction: (transactionInput: TransactionInput) => Promise<void>
 }
 
-export const TransactionsContext = createContext<Transaction[]>([]);
+export const TransactionsContext = createContext<TransactionsContextData>(
+    {} as TransactionsContextData
+);
 
 
 
@@ -35,8 +38,21 @@ export function TransactionsProvider({ children }: TransactionsProviderProps){
         .catch(err => console.log("Erro "+ err))
     }, [])
 
-    function createTransaction(transaction: TransactionInput){
-        api.post('/transactions', transaction)
+    async function createTransaction(transactionInput: TransactionInput){
+        
+        try{
+            const response = await api.post<Transaction>('/transactions', {
+                ...transactionInput
+            });
+
+            const transaction  = [...transactions, response.data];
+
+            setTransactions(transaction)
+
+        }catch (err) {
+            console.log('Erro:', err);
+        }
+        
     }
 
     return (
