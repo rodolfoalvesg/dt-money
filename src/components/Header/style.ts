@@ -3,10 +3,11 @@ import Styled from "styled-components"
 
 export const Container = Styled.header` 
     background: var(--blue);
+    width:100vw;
 `
 
 export const Content = Styled.section`
-    max-width: 1120px;
+    width:100vw;
     margin: 0 auto;
     padding: 2rem 1rem 10rem;
     display: flex;

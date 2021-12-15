@@ -21,6 +21,7 @@ export const GlobalStyle = createGlobalStyle`
 
 
     html{
+        width:100vw;
         @media (max-width: 1080px){
             font-size: 93.75%;
         }
@@ -74,6 +75,12 @@ export const GlobalStyle = createGlobalStyle`
         padding: 3rem;
         position: relative;
         border-radius: 0.25rem;
+        @media(max-width:800px){
+            max-width:400px;
+            bottom:0;
+            left:0;
+            position:fixed;
+        }
     }
 
     .react-modal-close{

@@ -6,6 +6,10 @@ export const Container = Styled.section`
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     margin-top: -7rem;
+    @media(max-width:800px){
+        grid-template-columns: repeat(1, 1fr);
+
+    }
 
     section{
         background: var(--shape);

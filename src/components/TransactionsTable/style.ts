@@ -2,7 +2,6 @@ import Styled from 'styled-components'
 
 export const Container = Styled.div`
     margin-top: 4rem;
-
     table{
         width: 100%;
         border-spacing: 0 0.5rem;
@@ -37,5 +36,17 @@ export const Container = Styled.div`
         }
 
 
+    }
+    @media(max-width:800px){
+    width: 100vw;
+    border-spacing: 0 0.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: center;
+    table{
+        width:30vw;
+    }
     }
 `
